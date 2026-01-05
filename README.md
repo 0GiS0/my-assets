@@ -31,26 +31,53 @@ Una vez que tu repositorio esté en GitHub, puedes acceder a los assets usando j
 https://cdn.jsdelivr.net/gh/[usuario]/[repositorio]@[version]/[ruta]
 ```
 
+**Nota**: Si no especificas `@[version]`, jsDelivr servirá automáticamente la versión más reciente del branch `main`.
+
 En mi caso:
 
 ```
+# Con versión específica
+https://cdn.jsdelivr.net/gh/0gis0/my-assets@v2.0.0/icons/heart.svg
+
+# Sin versión (última versión disponible)
 https://cdn.jsdelivr.net/gh/0gis0/my-assets/icons/heart.svg
 ```
 
 ### Ejemplos de uso directo
 
-#### Usando una versión específica (recomendado)
-```html
-<!-- Icono -->
-<img src="https://cdn.jsdelivr.net/gh/tu-usuario/my-assets@1.0.0/icons/home.svg" alt="Home">
+#### 🎨 Versiones disponibles
 
-<!-- Logo -->
-<img src="https://cdn.jsdelivr.net/gh/tu-usuario/my-assets@1.0.0/logos/logo.svg" alt="Logo">
+**v1.0.0** - Iconos coloridos con gradientes y fondos circulares
+```html
+<img src="https://cdn.jsdelivr.net/gh/0gis0/my-assets@v1.0.0/icons/home.svg" alt="Home v1">
+<img src="https://cdn.jsdelivr.net/gh/0gis0/my-assets@v1.0.0/icons/heart.svg" alt="Heart v1">
+<img src="https://cdn.jsdelivr.net/gh/0gis0/my-assets@v1.0.0/logos/logo.svg" alt="Logo v1">
 ```
 
-#### Usando la última versión del branch main
+**v2.0.0** - Iconos planos y minimalistas
 ```html
-<img src="https://cdn.jsdelivr.net/gh/tu-usuario/my-assets@main/icons/search.svg" alt="Search">
+<img src="https://cdn.jsdelivr.net/gh/0gis0/my-assets@v2.0.0/icons/home.svg" alt="Home v2">
+<img src="https://cdn.jsdelivr.net/gh/0gis0/my-assets@v2.0.0/icons/heart.svg" alt="Heart v2">
+<img src="https://cdn.jsdelivr.net/gh/0gis0/my-assets@v2.0.0/logos/logo.svg" alt="Logo v2">
+```
+
+**Sin versión** - Última versión disponible (actualmente v2.0.0)
+```html
+<img src="https://cdn.jsdelivr.net/gh/0gis0/my-assets/icons/home.svg" alt="Home latest">
+<img src="https://cdn.jsdelivr.net/gh/0gis0/my-assets/icons/heart.svg" alt="Heart latest">
+<img src="https://cdn.jsdelivr.net/gh/0gis0/my-assets/logos/logo.svg" alt="Logo latest">
+```
+
+#### 💡 Comparación de versiones
+```html
+<!-- v1.0.0: Diseño con gradientes -->
+<img src="https://cdn.jsdelivr.net/gh/0gis0/my-assets@v1.0.0/icons/star.svg" width="48" alt="Star v1.0.0">
+
+<!-- v2.0.0: Diseño plano -->
+<img src="https://cdn.jsdelivr.net/gh/0gis0/my-assets@v2.0.0/icons/star.svg" width="48" alt="Star v2.0.0">
+
+<!-- Sin versión: Siempre la más reciente -->
+<img src="https://cdn.jsdelivr.net/gh/0gis0/my-assets/icons/star.svg" width="48" alt="Star latest">
 ```
 
 ### Uso dinámico con manifest.json
@@ -58,13 +85,20 @@ https://cdn.jsdelivr.net/gh/0gis0/my-assets/icons/heart.svg
 Carga el manifest para acceder a todos los assets programáticamente:
 
 ```javascript
-// Cargar el manifest
-const response = await fetch('https://cdn.jsdelivr.net/gh/tu-usuario/my-assets@main/data/manifest.json');
-const manifest = await response.json();
+// Cargar el manifest de una versión específica
+const v1 = await fetch('https://cdn.jsdelivr.net/gh/0gis0/my-assets@v1.0.0/data/manifest.json');
+const manifestV1 = await v1.json();
+
+const v2 = await fetch('https://cdn.jsdelivr.net/gh/0gis0/my-assets@v2.0.0/data/manifest.json');
+const manifestV2 = await v2.json();
+
+// O la versión más reciente (sin especificar versión)
+const latest = await fetch('https://cdn.jsdelivr.net/gh/0gis0/my-assets/data/manifest.json');
+const latestManifest = await latest.json();
 
 // Construir URL completa
-const iconPath = manifest.assets.icons.home.path;
-const iconUrl = `${manifest.baseUrl}/${iconPath}`;
+const iconPath = manifestV2.assets.icons.home.path;
+const iconUrl = `${manifestV2.baseUrl}/${iconPath}`;
 
 // Usar en tu aplicación
 document.querySelector('img').src = iconUrl;
@@ -75,30 +109,75 @@ document.querySelector('img').src = iconUrl;
 Para evitar peticiones HTTP externas, usa los Data URIs del archivo `data-uri.json`:
 
 ```javascript
-// Cargar el archivo de Data URIs
-const response = await fetch('https://cdn.jsdelivr.net/gh/tu-usuario/my-assets@main/data/data-uri.json');
-const dataUris = await response.json();
+// Cargar el archivo de Data URIs de una versión específica
+const v1 = await fetch('https://cdn.jsdelivr.net/gh/0gis0/my-assets@v1.0.0/data/data-uri.json');
+const dataUrisV1 = await v1.json();
+
+const v2 = await fetch('https://cdn.jsdelivr.net/gh/0gis0/my-assets@v2.0.0/data/data-uri.json');
+const dataUrisV2 = await v2.json();
+
+// O la versión más reciente (sin especificar versión)
+const latest = await fetch('https://cdn.jsdelivr.net/gh/0gis0/my-assets/data/data-uri.json');
+const latestDataUris = await latest.json();
 
 // Usar directamente sin peticiones adicionales
-document.querySelector('img').src = dataUris.assets.icons.home;
+document.querySelector('img').src = dataUrisV2.assets.icons.home;
 
 // O en CSS
 const style = document.createElement('style');
-style.textContent = `.home-icon { background-image: url('${dataUris.assets.icons.home}'); }`;
+style.textContent = `.home-icon { background-image: url('${dataUrisV2.assets.icons.home}'); }`;
 document.head.appendChild(style);
 ```
 
 #### En CSS
 ```css
-.home-icon {
-  background-image: url('https://cdn.jsdelivr.net/gh/tu-usuario/my-assets@main/icons/home.svg');
+/* v1.0.0 - Gradientes */
+.home-icon-v1 {
+  background-image: url('https://cdn.jsdelivr.net/gh/0gis0/my-assets@v1.0.0/icons/home.svg');
+}
+
+/* v2.0.0 - Plano */
+.home-icon-v2 {
+  background-image: url('https://cdn.jsdelivr.net/gh/0gis0/my-assets@v2.0.0/icons/home.svg');
+}
+
+/* Sin versión - Última versión */
+.home-icon-latest {
+  background-image: url('https://cdn.jsdelivr.net/gh/0gis0/my-assets/icons/home.svg');
 }
 ```
 
 #### En JavaScript
 ```javascript
-const iconUrl = 'https://cdn.jsdelivr.net/gh/tu-usuario/my-assets@main/icons/user.svg';
+// Versión específica (recomendado para producción)
+const iconUrlV1 = 'https://cdn.jsdelivr.net/gh/0gis0/my-assets@v1.0.0/icons/user.svg';
+const iconUrlV2 = 'https://cdn.jsdelivr.net/gh/0gis0/my-assets@v2.0.0/icons/user.svg';
+
+// Sin versión - Última disponible (para desarrollo)
+const iconUrlLatest = 'https://cdn.jsdelivr.net/gh/0gis0/my-assets/icons/user.svg';
 ```
+
+
+## 🎨 Características de los iconos
+
+### Versión v1.0.0 (Gradientes)
+- Tamaño: 48x48 píxeles
+- Colores vibrantes con gradientes
+- Fondos circulares con colores suaves
+- Estilo moderno y detallado
+
+### Versión v2.0.0 (Plano)
+- Tamaño: 48x48 píxeles
+- Diseño plano y minimalista
+- Colores sólidos sin gradientes
+- Más ligero y simple
+
+### Sin especificar versión
+- Sirve automáticamente la versión más reciente disponible
+- Ideal para desarrollo o cuando quieres actualizaciones automáticas
+- ⚠️ **Advertencia**: En producción, usa versiones específicas para evitar cambios inesperados
+
+💡 **Tip**: Usa `@v1.0.0` o `@v2.0.0` para mantener un diseño consistente en producción, omite la versión para obtener siempre la última.
 
 
 ## 🤖 Automatización
