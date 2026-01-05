@@ -101,6 +101,30 @@ const iconUrl = 'https://cdn.jsdelivr.net/gh/tu-usuario/my-assets@main/icons/use
 ```
 
 
+## 🤖 Automatización
+
+Este repositorio incluye una **GitHub Action** que automáticamente regenera los archivos `manifest.json` y `data-uri.json` cuando detecta cambios en los directorios `icons/` o `logos/`.
+
+### ¿Cómo funciona?
+
+1. **Detecta cambios**: Se activa cuando hay un push con cambios en `icons/` o `logos/`
+2. **Genera archivos**: Ejecuta el script `scripts/generate-data-files.js`
+3. **Commit automático**: Si hay cambios, hace commit y push automático
+
+### Usar manualmente
+
+También puedes regenerar los archivos localmente:
+
+```bash
+node scripts/generate-data-files.js
+```
+
+El script automáticamente:
+- ✅ Escanea todos los SVG en `icons/` y `logos/`
+- ✅ Extrae dimensiones y colores
+- ✅ Genera Base64 para Data URIs
+- ✅ Actualiza ambos archivos JSON
+
 ## 📝 Notas
 
 - **jsDelivr cachea automáticamente** los archivos para mejor rendimiento
@@ -109,8 +133,10 @@ const iconUrl = 'https://cdn.jsdelivr.net/gh/tu-usuario/my-assets@main/icons/use
 - El CDN es gratuito y tiene cobertura global
 - **manifest.json** permite consumir assets dinámicamente
 - **data-uri.json** evita peticiones HTTP adicionales (ideal para performance crítico)
+- **GitHub Action** mantiene los datos sincronizados automáticamente
 
 ## 🔗 Enlaces útiles
 
 - [Documentación de jsDelivr](https://www.jsdelivr.com/documentation)
 - [GitHub Releases](https://docs.github.com/es/repositories/releasing-projects-on-github)
+- [GitHub Actions](https://docs.github.com/es/actions)
