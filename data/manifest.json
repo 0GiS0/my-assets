@@ -4,61 +4,89 @@
   "baseUrl": "https://cdn.jsdelivr.net/gh/tu-usuario/my-assets@main",
   "assets": {
     "icons": {
-      "home": {
-        "path": "icons/home.svg",
-        "description": "Icono de casa/inicio",
+      "bell": {
+        "path": "icons/bell.svg",
+        "description": "Icono de notificaciones",
         "size": "48x48",
-        "colors": ["#ff6b6b", "#ff8787"]
-      },
-      "search": {
-        "path": "icons/search.svg",
-        "description": "Icono de búsqueda",
-        "size": "48x48",
-        "colors": ["#4facfe", "#00f2fe"]
-      },
-      "user": {
-        "path": "icons/user.svg",
-        "description": "Icono de usuario",
-        "size": "48x48",
-        "colors": ["#a8e063", "#56ab2f"]
-      },
-      "settings": {
-        "path": "icons/settings.svg",
-        "description": "Icono de configuración",
-        "size": "48x48",
-        "colors": ["#f093fb", "#f5576c"]
+        "colors": [
+          "#e67e22",
+          "#c0392b"
+        ]
       },
       "heart": {
         "path": "icons/heart.svg",
         "description": "Icono de corazón/favoritos",
         "size": "48x48",
-        "colors": ["#fa709a", "#fee140"]
+        "colors": [
+          "#e74c3c"
+        ]
       },
-      "star": {
-        "path": "icons/star.svg",
-        "description": "Icono de estrella/destacado",
+      "home": {
+        "path": "icons/home.svg",
+        "description": "Icono de casa/inicio",
         "size": "48x48",
-        "colors": ["#ffd700", "#ffed4e"]
+        "colors": [
+          "#ff6b6b",
+          "#ff4757"
+        ]
+      },
+      "like": {
+        "path": "icons/like.svg",
+        "description": "Icono like",
+        "size": "48x48",
+        "colors": [
+          "#3498db",
+          "#5dade2"
+        ]
       },
       "mail": {
         "path": "icons/mail.svg",
         "description": "Icono de correo",
         "size": "48x48",
-        "colors": ["#667eea", "#764ba2"]
+        "colors": [
+          "#8e44ad"
+        ]
       },
-      "bell": {
-        "path": "icons/bell.svg",
-        "description": "Icono de notificaciones",
+      "search": {
+        "path": "icons/search.svg",
+        "description": "Icono de búsqueda",
         "size": "48x48",
-        "colors": ["#f857a6", "#ff5858"]
+        "colors": [
+          "#3498db"
+        ]
+      },
+      "settings": {
+        "path": "icons/settings.svg",
+        "description": "Icono de configuración",
+        "size": "48x48",
+        "colors": [
+          "#9b59b6"
+        ]
+      },
+      "star": {
+        "path": "icons/star.svg",
+        "description": "Icono de estrella/destacado",
+        "size": "48x48",
+        "colors": [
+          "#f39c12"
+        ]
+      },
+      "user": {
+        "path": "icons/user.svg",
+        "description": "Icono de usuario",
+        "size": "48x48",
+        "colors": [
+          "#2ecc71",
+          "#27ae60"
+        ]
       }
     },
     "logos": {
-      "main": {
+      "logo": {
         "path": "logos/logo.svg",
         "description": "Logo principal {gis}",
         "size": "110x80",
-        "colors": ["#f9a825", "#909090"]
+        "colors": []
       }
     }
   }
