@@ -3,10 +3,14 @@ name: 🤖 Update Assets Data
 on:
   push:
     branches: [main]
-    paths:
+    paths:    
       - 'icons/**'
       - 'logos/**'
+      - '.github/workflows/update-assets.yml'
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   update-data:
