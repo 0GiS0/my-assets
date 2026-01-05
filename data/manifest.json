@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "description": "Mapa de assets disponibles con sus rutas relativas",
+  "baseUrl": "https://cdn.jsdelivr.net/gh/tu-usuario/my-assets@main",
+  "assets": {
+    "icons": {
+      "home": {
+        "path": "icons/home.svg",
+        "description": "Icono de casa/inicio",
+        "size": "48x48",
+        "colors": ["#ff6b6b", "#ff8787"]
+      },
+      "search": {
+        "path": "icons/search.svg",
+        "description": "Icono de búsqueda",
+        "size": "48x48",
+        "colors": ["#4facfe", "#00f2fe"]
+      },
+      "user": {
+        "path": "icons/user.svg",
+        "description": "Icono de usuario",
+        "size": "48x48",
+        "colors": ["#a8e063", "#56ab2f"]
+      },
+      "settings": {
+        "path": "icons/settings.svg",
+        "description": "Icono de configuración",
+        "size": "48x48",
+        "colors": ["#f093fb", "#f5576c"]
+      },
+      "heart": {
+        "path": "icons/heart.svg",
+        "description": "Icono de corazón/favoritos",
+        "size": "48x48",
+        "colors": ["#fa709a", "#fee140"]
+      },
+      "star": {
+        "path": "icons/star.svg",
+        "description": "Icono de estrella/destacado",
+        "size": "48x48",
+        "colors": ["#ffd700", "#ffed4e"]
+      },
+      "mail": {
+        "path": "icons/mail.svg",
+        "description": "Icono de correo",
+        "size": "48x48",
+        "colors": ["#667eea", "#764ba2"]
+      },
+      "bell": {
+        "path": "icons/bell.svg",
+        "description": "Icono de notificaciones",
+        "size": "48x48",
+        "colors": ["#f857a6", "#ff5858"]
+      }
+    },
+    "logos": {
+      "main": {
+        "path": "logos/logo.svg",
+        "description": "Logo principal {gis}",
+        "size": "110x80",
+        "colors": ["#f9a825", "#909090"]
+      }
+    }
+  }
+}

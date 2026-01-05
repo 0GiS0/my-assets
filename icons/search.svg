@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="searchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="24" cy="24" r="22" fill="#e0f7ff"/>
+  <circle cx="20" cy="20" r="10" fill="url(#searchGrad)"/>
+  <circle cx="20" cy="20" r="7" fill="white" opacity="0.3"/>
+  <rect x="27" y="27" width="8" height="4" rx="2" transform="rotate(45 31 29)" fill="#3498db"/>
+</svg>
